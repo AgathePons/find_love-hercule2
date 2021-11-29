@@ -5,13 +5,14 @@ const app = {
     age: 35,
     department: 75,
     arm: 60.5,
-    inRealtionship: true,
+    inRelationship: true,
   },
   friends: ['Jupiter', 'Junon', 'Alcmène', 'Déjanire'],
   
   init: () => {
     app.printBannerTitle();
     app.displayProfilName(app.hercule.name, app.hercule.department);
+    app.displayPopularityTrend(base.vote.hercule, base.vote.cesar);
     app.displayTasksDone(app.hercule.name);
     app.displayWorks();
     app.displayDisponibilty();
@@ -20,8 +21,6 @@ const app = {
     base.setBestFriend(app.friends[0]);
     base.displayWork(2);
 
-    app.displayPopularityTrend(base.vote.hercule, base.vote.cesar);
-    
     // menu
     const menuToggler = document.getElementById('menu-toggler');
     menuToggler.addEventListener('click', function() {
@@ -31,7 +30,6 @@ const app = {
 
     // chat
     const contactForm = document.getElementById('contact');
-    //const inputForm = contactForm.querySelector('.contact__input');
     const inputButton = contactForm.querySelector('.contact__button');
     inputButton.addEventListener('click', function(e) {
       e.preventDefault();
@@ -47,7 +45,7 @@ const app = {
     const bannerTitle = document.createElement('h1');
     const headerBanner = document.getElementById('header-banner');
     bannerTitle.classList.add('banner__title');
-    bannerTitle.textContent = 'Vous consultez le profil de Hercule';
+    bannerTitle.textContent = `Vous consultez le profil de ${app.hercule.name}`;
     headerBanner.appendChild(bannerTitle);
   },
   /**
@@ -119,7 +117,6 @@ const app = {
     const activitiesPanel = document.getElementById('activities');
     const activitiesList = activitiesPanel.querySelector('.tasks');
     activitiesPanel.classList.remove('hidden');
-    console.log(base.activities.length);
     for (let i = 0; i < base.activities.length; i++) {
       if (base.activities[i].author === heroName && base.activities[i].finished) {
         
@@ -128,7 +125,6 @@ const app = {
         //console.log(activitiesListElement);
         activitiesList.appendChild(activitiesListElement);
       }
-      
     }
   }
 };
